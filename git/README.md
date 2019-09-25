@@ -45,7 +45,7 @@ Github Development Tools
 Or Do it all in one command 
 * `git checkout -b [new_branch_name]`
 
-We use a branching technique called **Feature Branches**; This means that when you are developing a new [feature], name the branch after that feature and only make [feature] related changes on that branch.
+We use a branching technique called **Feature Branch**; This means that when you are developing a new [feature], name the branch after that feature and only make [feature] related changes on that branch.
 
 Example: If we need to implement a timelapse for OBC
 
