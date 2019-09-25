@@ -47,7 +47,8 @@ Or Do it all in one command
 
 We use a branching technique called **Feature Branches**; This means that when you are developing a new [feature], name the branch after that feature and only make [feature] related changes on that branch.
 
-Example: We need to implement a timelapse for OBC
+Example: If we need to implement a timelapse for OBC
+
 	`git checkout -b timelapse`
 
 ## Git Configuration
@@ -58,6 +59,10 @@ Example: We need to implement a timelapse for OBC
 * Global level git config
   * `--global` scoped to repositories in the home directory
   * `--system` scoped to all repositories in your local filesystem
+
+or do it in vi
+
+* `git config --global --edit`
 
 ## Staging
 * `git add [file_to_be_staged]`
