@@ -86,7 +86,7 @@ Example: If we need to implement a timelapse for OBC
 	* `-a` Tells the command to automatically stage files that have been modified and deleted, but new files you have not told Git about are not affected.
 ## Stashing
 Revert any un-commited changes back to the last commit
-`git stash`
+* `git stash`
 * Stash is a stack 
 * Pop a stash 
 
