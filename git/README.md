@@ -102,6 +102,7 @@ In order to get all of your local changes distributed amongst the team, we need 
 * `git pull origin master`
 
 ## Resolving Conflicts
+* Provide brief example in vim
 
 ## Git Ignore
 * `.gitignore`
