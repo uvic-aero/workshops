@@ -16,8 +16,8 @@ So basically, if you and I are working on the same code, we can:
 This tutorial will cover the basics of git:
 
 1. [Cloning](#cloning)
-1. [Branching](#branching)
 1. [Git Configuration](#git-configuration)
+1. [Branching](#branching)
 1. [Committing](#committing)
 1. [Pushing](#pushing)
 1. [Merge Conflicts](#resolving-conflicts)
@@ -37,20 +37,6 @@ Github Development Tools
 * `git clone [repository name]`
 * HTTP vs SSH
 
-## Branching
-* `git branch`
-* `git branch [branch_name]`
-* `git checkout [branch_name]`
-
-Or Do it all in one command 
-* `git checkout -b [new_branch_name]`
-
-We use a branching technique called **Feature Branch**; This means that when you are developing a new [feature], name the branch after that feature and only make [feature] related changes on that branch.
-
-Example: If we need to implement a timelapse for OBC
-
-	`git checkout -b timelapse`
-
 ## Git Configuration
 * Local (Repo) level git config
   * Scoped to the current repository directory you are in
@@ -63,6 +49,28 @@ Example: If we need to implement a timelapse for OBC
 or do it in vi
 
 * `git config --global --edit`
+
+## Branching
+* `git branch`
+* `git branch [branch_name]`
+* `git checkout [branch_name]`
+
+Or Do it all in one command 
+* `git checkout -b [new_branch_name]`
+
+We use a branching technique called **Feature Branch**; This means that when you are developing a new [feature], name the branch after that feature and only make [feature] related changes on that branch.
+
+Example: If we need to implement a timelapse for OBC
+
+1. `git checkout -b timelapse`
+1. Continue to develop the timelapse on the timelapse branch.
+1. Merge the branch when feature is completed(more on this step later).
+
+**What not to do**
+
+1. `git checkout -b dragons-branch`
+1. Make hundreds of random changes for 8 months.
+1. Merge the branch with all the random changes 2 weeks before competition.
 
 ## Staging
 * `git add [file_to_be_staged]`
