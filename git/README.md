@@ -84,6 +84,12 @@ Example: If we need to implement a timelapse for OBC
 * Stage and Commit in one command
 	* `git commit -a -m "[a description of your commit]"`
 	* `-a` Tells the command to automatically stage files that have been modified and deleted, but new files you have not told Git about are not affected.
+## Stashing
+Revert any un-commited changes back to the last commit
+`git stash`
+* Stash is a stack 
+* Pop a stash 
+
 ## Pushing
 In order to get all of your local changes distributed amongst the team, we need to send those changes to the remote repository.
 * `git push`
@@ -104,3 +110,5 @@ In order to get all of your local changes distributed amongst the team, we need 
 * SSH key pairs
 * Git Aliases ie .bashrc .zshrc
 	* [dot files](https://github.com/dragonprevost/dot-files/blob/master/zshrc)
+* Git status `git status`
+* Git diff `git diff`
