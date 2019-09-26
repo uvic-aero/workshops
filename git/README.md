@@ -79,7 +79,8 @@ Example: If we need to implement a timelapse for OBC
 	* Go through all the changes and select which to stage and which to not stage
 
 ## Committing
-* `git add [new file||directory with new files]`
+* Tell git to track new files you have created
+	* `git add [new file||directory with new files]`
 * `git commit -m "[a description of your commit]"`
 	* `-m <message>` specifies `<message>` as the commit message
 * Stage and Commit in one command
