@@ -1,4 +1,4 @@
-def bar(arg1, arg2):
+def bar2(arg1, arg2):
 	print(arg1)
 	print(arg2)
 
