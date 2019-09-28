@@ -5,6 +5,7 @@ import socket
 import cv2
 import sys
 import argparse
+import time
 
 jpeg_quality = 50
 host         = ''
@@ -41,7 +42,7 @@ while True:
     elif(data == "quit"):
         grabber.stop()
         keep_running = False
-
+    time.sleep(0.5)
 print("Quitting..")
 grabber.join()
 sock.close()
