@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
 import socket
 import cv2
 import sys
@@ -28,8 +25,9 @@ while True:
     data = data.decode('utf-8')
     if(data == "get"):
         ret, frame = cap.read()
-        frame = cv2.resize(frame, (0,0), fx=0.1, fy=0.1)
-        buffer = cv2.imencode('.jpg', frame)[1].tostring()
+        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        gray = cv2.resize(gray, (0,0), fx=0.1, fy=0.1)
+        buffer = cv2.imencode('.jpg', gray)[1].tostring()
         print("img size: ", len(buffer))
         if buffer is None:
             continue
@@ -42,7 +40,7 @@ while True:
     elif(data == "quit"):
         grabber.stop()
         keep_running = False
-    time.sleep(0.5)
+    time.sleep(0.1)
 print("Quitting..")
 grabber.join()
 sock.close()
