@@ -21,13 +21,17 @@ def detect_shape(contour):
             return (x, y)
     return -1,-1
 
-frame = cv2.imread('resources/code2.jpeg')
+filepath = 'resources/no-border.jpg'
+
+
+frame = cv2.imread(filepath)
 gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 blur = cv2.GaussianBlur(gray, (5,5), 0)
-ret, thresh = cv2.threshold(blur, 130, 255, cv2.THRESH_BINARY)
+ret, thresh = cv2.threshold(blur, 100, 255, cv2.THRESH_BINARY)
 
 contours, h = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-
+cv2.imshow('frame', thresh)
+cv2.waitKey(0)
 for cont in contours:
     x,y = detect_shape(cont)
     if x > -1: 
