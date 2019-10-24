@@ -28,7 +28,7 @@ while True:
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         gray = cv2.resize(gray, (0,0), fx=0.1, fy=0.1)
         buffer = cv2.imencode('.jpg', gray)[1].tostring()
-        print("img size: ", len(buffer))
+        print("img size: ", sys.sizeof(buffer))
         if buffer is None:
             continue
         if len(buffer) > 65507:
