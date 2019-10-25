@@ -3,7 +3,7 @@ const dgram = require("dgram");
 const server = dgram.createSocket("udp4");
 
 const host = "0.0.0.0";
-const port = 41100;
+const port = 5100;
 
 const clients = [];
 
