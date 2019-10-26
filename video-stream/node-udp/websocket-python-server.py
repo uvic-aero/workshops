@@ -10,8 +10,9 @@ def get_frame_buffer(cap):
     ret, frame = cap.read()
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     gray = cv2.resize(gray, (0, 0), fx=0.1, fy=0.1)
-    return cv2.imencode('.jpg', gray)[1].tostring()
-    # return base64.b64encode(img)
+    img = cv2.imencode('.jpg', gray)[1]
+    # return img.tostring()
+    return base64.b64encode(img)
 
 
 jpeg_quality = 50
@@ -41,3 +42,4 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 print("buffer is None")
                 continue
             conn.sendall(buffer)
+            time.sleep(2.0)
