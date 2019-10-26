@@ -12,7 +12,7 @@ host = '0.0.0.0'
 port = 5100
 server_address = (host, port)
 
-cv2.namedWindow("Image")
+# cv2.namedWindow("Image")
 
 t0 = time.time()
 frame_idx = 0
@@ -37,7 +37,8 @@ while(True):
 
     if frame_idx == 30:
         t1 = time.time()
-        sys.stdout.write('\r Framerate : {:.2f} frames/s.     '.format(30 / (t1 - t0)))
+        sys.stdout.write(
+            '\r Framerate : {:.2f} frames/s.     '.format(30 / (t1 - t0)))
         sys.stdout.flush()
         t0 = t1
         frame_idx = 0

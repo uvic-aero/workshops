@@ -40,7 +40,7 @@ while True:
     elif(data == "quit"):
         grabber.stop()
         keep_running = False
-    time.sleep(0.1)
+    # time.sleep(0.1)
 print("Quitting..")
 grabber.join()
 sock.close()
