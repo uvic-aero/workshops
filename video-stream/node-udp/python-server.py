@@ -29,7 +29,6 @@ while True:
     gray = cv2.resize(gray, (0, 0), fx=0.1, fy=0.1)
     img = cv2.imencode('.jpg', gray)[1]
     buffer = base64.b64encode(img)
-    print(buffer)
     print("img size: ", sys.getsizeof(buffer))
     if buffer is None:
         print("buffer is None")

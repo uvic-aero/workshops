@@ -1,46 +1,29 @@
-// Code ripped from https://www.sourcecodester.com/tutorials/11062/writing-udp-clientserver-application-nodejs.html
-const dgram = require("dgram");
-const server = dgram.createSocket("udp4");
+const WebSocket = require("ws");
 
-const host = "0.0.0.0";
-const port = 5100;
+const WS_PORT = process.env.WS_PORT || 3001;
 
-const clients = [];
+const wsServer = new WebSocket.Server({ port: WS_PORT }, () =>
+  console.log(`WS server is listening at ws://localhost:${WS_PORT}`)
+);
 
-server.on("error", err => {
-  console.log(err.stack);
-  server.close();
-});
+// array of connected websocket clients
+let connectedClients = [];
 
-server.on("message", (msg, rinfo) => {
-  console.log(`Connected client at ${rinfo.address}:${rinfo.port}`);
-  clients.push(rinfo);
-});
-
-server.on("listening", () => {
-  const address = server.address();
-  console.log(`server listening ${address.address}:${address.port}`);
-});
-
-setInterval(() => {
-  const price = Math.floor(1000 + Math.random() * 100);
-  const time = Date.now();
-  const data = new Buffer(price + "," + time);
-
-  clients.forEach(rinfo => {
-    server.send(
-      data,
-      0,
-      data.length,
-      rinfo.port,
-      rinfo.address,
-      (err, bytes) => {
-        if (err) {
-          console.log(err.stack);
-        }
+wsServer.on("connection", (ws, req) => {
+  console.log("Connected");
+  // add new connected client
+  connectedClients.push(ws);
+  // listen for messages from the streamer, the clients will not send anything so we don't need to filter
+  ws.on("message", data => {
+    // send the base64 encoded frame to each connected ws
+    connectedClients.forEach((ws, i) => {
+      if (ws.readyState === ws.OPEN) {
+        // check if it is still connected
+        ws.send(data); // send
+      } else {
+        // if it's not connected remove from the array of connected ws
+        connectedClients.splice(i, 1);
       }
-    );
+    });
   });
-}, 1000);
-
-server.bind(port, host);
+});
