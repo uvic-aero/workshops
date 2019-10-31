@@ -38,9 +38,7 @@ while True:
         # We send back the buffer to the client
         sock.sendto(buffer, address)
     elif(data == "quit"):
-        grabber.stop()
         keep_running = False
     # time.sleep(0.1)
 print("Quitting..")
-grabber.join()
 sock.close()
