@@ -34,10 +34,7 @@ while True:
         print("buffer is None")
         continue
     # We send back the buffer to the client
-    print("Sending")
     sock.sendto(buffer, address)
-    print("sent")
-    time.sleep(2.0)
 
 print("Quitting..")
 sock.close()
