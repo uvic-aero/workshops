@@ -4,12 +4,13 @@ import numpy as np
 import sys
 import time
 import argparse
+import zlib
 
 
 # Create a UDP socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 host = '0.0.0.0'
-port = 5100
+port = 1201
 server_address = (host, port)
 
 # cv2.namedWindow("Image")
@@ -17,17 +18,17 @@ server_address = (host, port)
 t0 = time.time()
 frame_idx = 0
 
-while(True):
+while True:
     sent = sock.sendto("get".encode('utf-8'), server_address)
-
     data, server = sock.recvfrom(65507)
     if len(data) == 4:
         # This is a message error sent back by the server
         if(data == "FAIL"):
             continue
-    array = np.frombuffer(data, dtype=np.dtype('uint8'))
-    img = cv2.imdecode(array, 1)
-    cv2.imshow("Image", img)
+    array = zlib.decompress(data, 0)
+    array = np.frombuffer(array, dtype=np.dtype('uint8'))
+    final = cv2.imdecode(array, 1)
+    cv2.imshow("Image", final)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         print("Asking the server to quit")
         sock.sendto("quit".encode('utf-8'), server_address)
@@ -42,3 +43,5 @@ while(True):
         sys.stdout.flush()
         t0 = t1
         frame_idx = 0
+
+cv2.destroyAllWindows()
