@@ -8,7 +8,7 @@ const HOST = "0.0.0.0";
 const PORT = 5100;
 
 const message = utf8.encode("get");
-const WS_URL = "ws://localhost:3001";
+const WS_URL = "ws://localhost:3001/video-stream";
 const ws = new WebSocket(WS_URL);
 
 client.send(message, 0, message.length, PORT, HOST, (err, bytes) => {
@@ -19,18 +19,7 @@ client.send(message, 0, message.length, PORT, HOST, (err, bytes) => {
 ws.onopen = () => {
   client.on("message", (message, remote) => {
     console.log(remote.address + ":" + remote.port + " - ");
-    // let jpg = Buffer.from(message.toString(), "base64");
     let jpg = `data:image/jpeg;base64,${message.toString()}`;
     ws.send(jpg);
   });
 };
-
-// client.on("message", (message, remote) => {
-//   console.log(remote.address + ":" + remote.port + " - ");
-//   let jpg = Buffer.from(message.toString(), "base64");
-//   ws.send(jpg);
-//   fs.writeFile(`${Math.random()}my-file.jpg`, jpg, err => {
-//     if (err) throw err;
-//     console.log("The binary data has been decoded and saved to my-file.png");
-//   });
-// });

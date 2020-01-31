@@ -3,7 +3,9 @@ const WebSocket = require("ws");
 const WS_PORT = process.env.WS_PORT || 3001;
 
 const wsServer = new WebSocket.Server({ port: WS_PORT }, () =>
-  console.log(`WS server is listening at ws://localhost:${WS_PORT}`)
+  console.log(
+    `WS server is listening at ws://localhost:${WS_PORT}/video-stream`
+  )
 );
 
 // array of connected websocket clients

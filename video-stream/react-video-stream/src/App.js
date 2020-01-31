@@ -5,7 +5,7 @@ function App() {
   const [imgSrc, setSrc] = useState("");
 
   useEffect(() => {
-    const WS_URL = "ws://localhost:3001";
+    const WS_URL = "ws://localhost/video-stream";
     const ws = new WebSocket(WS_URL);
     ws.onopen = () => console.log(`Connected to ${WS_URL}`);
     ws.onmessage = message => {
